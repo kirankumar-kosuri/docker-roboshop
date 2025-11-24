@@ -2,7 +2,7 @@ networks:
   default:
     driver: bridge
     name: roboshop
-    external: false
+    external: false # true if you have created network manually using docker network command
 
 #########################################################################################################################################
 
@@ -10,6 +10,8 @@ services:
   mongodb:
     image: mongodb:v1
     container_name: mongodb
+    volumes:
+      - mongodb:/data/db
 
 #########################################################################################################################################
   
@@ -24,18 +26,24 @@ services:
   redis:
     image: redis:7.0
     container_name: redis
+    volumes:
+    - redis:/data
     
 #########################################################################################################################################
   
   mysql:
     image: mysql:v1
     container_name: mysql
+    volumes:
+    - mysql:/var/lib/mysql
 
 #########################################################################################################################################
 
   rabbitmq:
     image: rabbitmq:3
     container_name: rabbitmq
+    volumes:
+    - rabbitmq:/var/lib/rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
@@ -90,5 +98,13 @@ services:
     - cart
     - shipping
     - payment
+
+#########################################################################################################################################
+
+volumes:
+    mongodb: # This equal to --> docker volume create mongodb
+    redis: # This equal to --> docker volume create redis
+    mysql: # This equal to --> docker volume create mysql
+    rabbitmq: # This equal to --> docker volume create rabbitmq
 
 #########################################################################################################################################
