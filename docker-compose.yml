@@ -1,0 +1,10 @@
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: false
+
+services:
+  mongodb:
+    image: mongodb:v1
+    container_name: mongodb
