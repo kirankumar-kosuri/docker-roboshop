@@ -89,11 +89,11 @@ services:
     - cart
 
 
- volumes:
-   mongodb:
-   redis:
-   mysql:
-   rabbitmq:
+volumes:
+    mongodb:
+    redis:
+    mysql:
+    rabbitmq:
 
   
 
