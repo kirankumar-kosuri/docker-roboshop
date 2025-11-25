@@ -22,7 +22,7 @@ services:
       dockerfile: Dockerfile
     image: kirankumarkosuri/catalogue:v1
     container_name: catalogue
-    depends_on: 
+    depends_on:
     - mongodb
 
 #########################################################################################################################################
