@@ -112,7 +112,6 @@ services:
 #########################################################################################################################################
 
 volumes:
-
     mongodb: # This equal to --> docker volume create mongodb
     redis: # This equal to --> docker volume create redis
     mysql: # This equal to --> docker volume create mysql
