@@ -7,21 +7,30 @@ networks:
 
 services:
   mongodb:
-    image: mongodb:v1
+    build:
+      context: ./mongodb
+      dockerfile: Dockerfile
+    image: kirankumarkosuri/mongodb:v1
     container_name: mongodb
     volumes:
       - mongodb:/data/db
 
 
   catalogue:
-    image: catalogue:v1
+    build:
+      context: ./catalogue
+      dockerfile: Dockerfile
+    image: kirankumarkosuri/catalogue:v1
     container_name: catalogue
     depends_on:
     - mongodb
 
 
   frontend:
-    image: frontend:v1
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: kirankumarkosuri/frontend:v1
     container_name: frontend
     ports:
       - "80:80"
@@ -40,7 +49,10 @@ services:
 
 
   user:
-    image: user:v1
+    build:
+      context: ./user
+      dockerfile: Dockerfile
+    image: kirankumarkosuri/user:v1
     container_name:  user
     depends_on:
     - redis
@@ -48,7 +60,10 @@ services:
 
   
   cart:
-    image: cart:v1
+    build:
+      context: ./cart
+      dockerfile: Dockerfile
+    image: kirankumarkosuri/cart:v1
     container_name: cart
     depends_on:
     - redis
@@ -56,14 +71,20 @@ services:
 
 
   mysql:
-    image: mysql:v1
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    image: kirankumarkosuri/mysql:v1
     container_name: mysql
     volumes:
       - mysql:/var/lib/mysql
 
 
   shipping:
-    image: shipping:v1
+    build:
+      context: ./shipping
+      dockerfile: Dockerfile
+    image: kirankumarkosuri/shipping:v1
     container_name: shipping
     depends_on:
     - cart
@@ -81,7 +102,10 @@ services:
 
 
   payment:
-    image: payment:v1
+    build:
+      context: ./payment
+      dockerfile: Dockerfile
+    image: kirankumarkosuri/payment:v1
     container_name: payment
     depends_on:
     - rabbitmq
