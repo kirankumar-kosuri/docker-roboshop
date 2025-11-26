@@ -26,7 +26,7 @@ WORKDIR /opt/server
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 COPY --from=builder --chown=roboshop:roboshop /install /usr/local/bin
 COPY payment.ini *.py requirements.txt .
-USER roboshop
+#USER roboshop
 ENV CART_HOST="cart" \
     CART_PORT="8080" \
     USER_HOST="user" \
