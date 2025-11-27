@@ -1,7 +1,7 @@
 networks:
   default:
     driver: bridge # Using bridge network in docker 
-    name: roboshop # Default name roboshop
+    name: roboshop # Default name roboshop      
     external: false # True if we create network manually
 
 #######################################################################################################################
